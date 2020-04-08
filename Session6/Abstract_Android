@@ -1,0 +1,12 @@
+package Inheritance_Abstraction;
+
+public class Abstract_Android extends Abstract_Class{
+
+	@Override
+	public void doubletop() {
+		System.out.println("Android double tap");
+	}
+	
+	
+
+}
