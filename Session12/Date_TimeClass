@@ -1,0 +1,17 @@
+package Session12_DateTime;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
+public class Date_TimeClass {
+
+	public static void main(String[] args) {
+		// Current date, current time, and both
+
+		System.out.println(LocalDate.now());
+		System.out.println(LocalTime.now());
+		System.out.println(LocalDateTime.now());
+	}
+
+}
