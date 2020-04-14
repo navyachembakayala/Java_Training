@@ -1,0 +1,36 @@
+package Session14_Excels;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class ReadExcel_Class {
+
+	public static void main(String[] args) {
+
+		File file = new File("E:\\Excel1.xlsx");
+		XSSFWorkbook wrkbook;
+		XSSFSheet    wrksheet;
+		try {
+			FileInputStream  excel = new FileInputStream(file);
+			wrkbook = new XSSFWorkbook(excel);
+			wrksheet = wrkbook.getSheet("Sheet1");
+			//System.out.println(wrksheet.getRow(2).getCell(3).getDateCellValue());
+			int start = wrksheet.getFirstRowNum();
+			int end = wrksheet.getLastRowNum();
+			for(int i=start;i<=end;i++) {
+				System.out.print(wrksheet.getRow(i).getCell(0).getStringCellValue()+"\t");
+				System.out.print(wrksheet.getRow(i).getCell(1).getNumericCellValue()+"\t");
+				System.out.print(wrksheet.getRow(i).getCell(2).getBooleanCellValue()+"\t");
+				System.out.println(wrksheet.getRow(i).getCell(3).getDateCellValue());
+			}
+		} catch(IOException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
+}
