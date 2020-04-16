@@ -11,45 +11,5 @@ public class Account_Details {
 	private BigDecimal Amount;//It all comes down to precision, and Java's BigDecimal seems the correct answer on that platform because it gives you the best support for specifying and preserving what can be highly variable precision.
 	String Currency;
 	
-	public String getAccount_Type() {
-		return Account_Type;
-	}
-	public void setAccount_Type(String account_Type) {
-		Account_Type = account_Type;
-	}
-	public String getName() {
-		return Name;
-	}
-	public void setName(String name) {
-		Name = name;
-	}
-	public BigInteger getAccount_Number() {
-		return Account_Number;
-	}
-	public void setAccount_Number(BigInteger account_Number) {
-		Account_Number = account_Number;
-	}
-	public BigDecimal getAmount() {
-		return Amount;
-	}
-	public void setAmount(BigDecimal amount) {
-		Amount = amount;
-	}
-	public String getCurrency() {
-		return Currency;
-	}
-	public void setCurrency(String currency) {
-		Currency = currency;
-	}
-	
-	public void displayaccountdetails(){
-		System.out.println("Account Type: "+ Account_Type 
-				    + "\n"+"User Name: "   + Name
-					+ "\n"+"Account Number: "+ Account_Number 
-					+ "\n"+"Balance: "      + Amount
-					+ "\n"+"Currency: "     + Currency);
-	}
-
-
 	
 }
