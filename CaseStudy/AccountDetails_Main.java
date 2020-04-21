@@ -105,14 +105,19 @@ public class AccountDetails_Main {
 		
 		break;
 		}
-		
+
 		getdetails(mp);
+		while(true) {
 		Scanner Ip = new Scanner(System.in);
 		System.out.println("Enter the account number to update the details:"+"\n");
 		BigInteger accNum = Ip.nextBigInteger();
-		System.out.println("Enter your choice"+"\n"+"1.User Name"+"\n"
-		+"2.Deposit the amount"+"\n"+"3.Withdraw amount"+"\n"+"4.Currency"+"\n");
 		Ip.nextLine();
+//		System.out.println("Enter your choice"+"\n"+"1.User Name"+"\n"
+//		+"2.Deposit the amount"+"\n"+"3.Withdraw amount"+"\n"+"4.Currency"+"\n"+"5.Delete the account"+"\n");
+//		Ip.nextLine();
+		while(true) {
+		System.out.println("Enter your choice"+"\n"+"1.User Name"+"\n"
+				+"2.Deposit the amount"+"\n"+"3.Withdraw amount"+"\n"+"4.Currency"+"\n"+"5.Delete the account"+"\n");
 		String Updatedetails = Ip.nextLine();
 		switch(Updatedetails){
 			case "1": 
@@ -132,7 +137,7 @@ public class AccountDetails_Main {
 			case "3":
 				try {
 				getUpdatewithdrawbalance(mp,accNum);
-				}catch(Exception e1) {
+				}catch(Exception e2) {
 					System.out.println("Account Number Not found");
 				}
 				
@@ -140,13 +145,44 @@ public class AccountDetails_Main {
 			case "4":
 				try {
 				getUpdateCurrency(mp,accNum);
-				}catch(Exception e1) {
+				}catch(Exception e3) {
 					System.out.println("Account Number Not found");
 				}
 				break;
+			case "5":
+				try {
+					removeaccount(mp,accNum);
+				}catch(Exception e4) {
+					System.out.println("Account Number Not found");
 			}
+					
+			}
+		System.out.println("Do you want to Update more details of the same account ....then Press '1'");
+		if(!s1.nextLine().equalsIgnoreCase("1")) {
+			break;
 		}
-	
+		getdetails(mp);
+		continue;
+		}
+		System.out.println("Do you want to Update another account details ....then Press '1'");
+		if(!s1.nextLine().equalsIgnoreCase("1")) {
+			break;
+		}
+		continue;
+		}
+		getdetails(mp);
+	}
+	private static void removeaccount(HashMap<BigInteger, List<String>> mp, BigInteger accNum) {
+		for(BigInteger key: mp.keySet()) {
+			List<String> s = new ArrayList<String>();
+			s =mp.get(accNum);
+			System.out.println("Removed the account details");
+			mp.remove(accNum, s);
+			getdetails(mp);
+			break;
+		}
+	}
+
 	private static void getUpdatewithdrawbalance(HashMap<BigInteger , List<String>> mp3,BigInteger accNum) {
 		for(BigInteger key: mp3.keySet()) {
 			List<String> s = new ArrayList<String>();
@@ -234,6 +270,7 @@ public class AccountDetails_Main {
 			newData.add(s.get(3));
 			mp3.put(accNum, newData);
 			getdetails(mp3);
+			break;
 		}
 		
 	}
